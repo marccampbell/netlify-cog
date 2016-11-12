@@ -1,0 +1,41 @@
+{
+  "name": "netlify-cog",
+  "version": "0.0.1",
+  "description": "Cog to interact with Netlify",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retracedhq/netlify-cog.git"
+  },
+  "author": "Retraced",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/retracedhq/netlify-cog/issues"
+  },
+  "homepage": "https://github.com/retracedhq/netlify-cog#readme",
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/lodash": "^4.14.38",
+    "@types/node": "^6.0.46",
+    "eslint": "^3.9.1",
+    "source-map-support": "^0.4.6",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.9"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.6.15",
+    "cassandra-driver": "^3.1.5",
+    "chalk": "^1.1.3",
+    "disqueue-node": "^1.2.4",
+    "elasticsearch": "^12.0.1",
+    "lodash": "^4.16.6",
+    "netlify": "^1.2.0",
+    "performance-now": "^0.2.0",
+    "pg": "^6.1.0",
+    "threads": "^0.7.2",
+    "uuid": "^2.0.3"
+  }
+}

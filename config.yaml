@@ -1,0 +1,17 @@
+---
+cog_bundle_version: 4
+name: netlify
+description: Interact with Netlify
+version: 0.0.1
+docker: 
+  image: marc/netlify-cog
+  tag: latest
+commands:
+  list:
+    description: List recent deploys and statuses for a project
+    executable: /home/bundle//bin/list
+    rules:
+      - when command is netlify:list must have netlify:read
+templates: 
+  list:
+    slack: "{{#.}}{{build_id}} - {{state}} - {{created_at}} - {{commit_ref}}{{/.}}"

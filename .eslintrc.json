@@ -1,0 +1,22 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "ecmaFeatures": {
+            "impliedStrict": true,
+            "modules": true
+        }
+    },
+    "extends": "eslint:recommended",
+    "installedESLint": true,
+    "rules": {
+        "no-unused-vars": "off",
+        "class-methods-use-this": "off",
+        "no-console": "off",
+        "no-use-before-define": "off",
+        "global-require": "off",
+        "no-bitwise": "off",
+        "arrow-body-style": "off",
+        "strict": "off",
+        "no-param-reassign": "off"
+    }
+}
