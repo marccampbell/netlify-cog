@@ -2,7 +2,7 @@
 cog_bundle_version: 4
 name: netlify
 description: Interact with Netlify
-version: 0.0.16
+version: 0.0.18
 author: Marc Campbell <marc.e.campbell@gmail.com>
 docker: 
   image: marc/netlify-cog
@@ -23,14 +23,14 @@ commands:
 templates:
   list:
     body: |
-      | Created At | Status | Commit Sha |
-      |------------|--------|------------| 
+      | Is Current | Created At | Status | Commit Sha |
+      |------------|------------|--------|------------| 
       ~each var=\$results~
-      |~\$item.created_at~|~\$item.state~|~\$item.commit_ref~|
+      |~\$item.is_current~|~\$item.created_at~|~\$item.state~|~\$item.commit_ref~|
       ~end~
   describe:
     body: |
-      **Name:** ~\$results.name~
-      **Custom Domain:** ~\$results.custom_domain~
-      **Last Deploy:** ~\$results.published_deploy_time~
-      **Current Revision:** ~\$results.published_deploy_commit~
+      **Name:** ~\$results[0].name~
+      **Custom Domain:** ~\$results[0].custom_domain~
+      **Last Deploy:** ~\$results[0].published_deploy_time~
+      **Current Revision:** ~\$results[0].published_deploy_commit~

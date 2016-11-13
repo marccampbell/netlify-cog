@@ -13,12 +13,14 @@ module.exports = async function(args) {
 
   const site = await client.site(siteLookup.id);
   let deploys = await site.deploys();
+  const currentBuildId = site.published_deploy ? site.published_deploy.build_id : '---';
 
   // Return up to 10 builds
   deploys = _.slice(deploys, 0, 10);
 
   const result = _.map(deploys, (deploy) => {
     return {
+      is_current: deploy.build_id === currentBuildId ? '★' : '',
       build_id: deploy.build_id,
       state: deploy.state,
       error_message: deploy.error_message,
