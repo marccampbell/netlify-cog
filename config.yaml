@@ -2,16 +2,35 @@
 cog_bundle_version: 4
 name: netlify
 description: Interact with Netlify
-version: 0.0.1
+version: 0.0.16
+author: Marc Campbell <marc.e.campbell@gmail.com>
 docker: 
   image: marc/netlify-cog
   tag: latest
+permissions:
+  - netlify:read
 commands:
   list:
     description: List recent deploys and statuses for a project
-    executable: /home/bundle//bin/list
+    executable: /home/bundle/bin/list
     rules:
       - when command is netlify:list must have netlify:read
-templates: 
+  describe:
+    description: List the current status of a project
+    executable: /home/bundle/bin/describe
+    rules:
+      - when command is netlify:describe must have netlify:read
+templates:
   list:
-    slack: "{{#.}}{{build_id}} - {{state}} - {{created_at}} - {{commit_ref}}{{/.}}"
+    body: |
+      | Created At | Status | Commit Sha |
+      |------------|--------|------------| 
+      ~each var=\$results~
+      |~\$item.created_at~|~\$item.state~|~\$item.commit_ref~|
+      ~end~
+  describe:
+    body: |
+      **Name:** ~\$results.name~
+      **Custom Domain:** ~\$results.custom_domain~
+      **Last Deploy:** ~\$results.published_deploy_time~
+      **Current Revision:** ~\$results.published_deploy_commit~

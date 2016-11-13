@@ -12,16 +12,14 @@ module.exports = function() {
   }
 
   listBuilds(args).then((sites) => {
-    console.log('COG_TEMPLATE: list')
-    console.log('JSON');
-    if (sites) {
-      console.log(sites);
-    } else {
-      console.log('no sites');
+    if (!sites) {
+      console.error(`The site ${args[0]} was not found in the Netlify account.`);
+      process.exit(1);
+      return;
     }
+
+    console.log('COG_TEMPLATE: list')
+    console.log('JSON\n');
+    console.log(JSON.stringify(sites));
   });
 };
-
-
-
-

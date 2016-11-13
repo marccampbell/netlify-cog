@@ -23,7 +23,7 @@ module.exports = async function(args) {
       state: deploy.state,
       error_message: deploy.error_message,
       created_at: deploy.created_at,
-      commit_ref: deploy.commit_ref,
+      commit_ref: deploy.commit_ref ? deploy.commit_ref.substring(0, 7) : 'Unknown',
     }
   })
 
