@@ -2,7 +2,7 @@
 cog_bundle_version: 4
 name: netlify
 description: Interact with Netlify
-version: 0.0.18
+version: 0.0.19
 author: Marc Campbell <marc.e.campbell@gmail.com>
 docker: 
   image: marc/netlify-cog
@@ -20,6 +20,11 @@ commands:
     executable: /home/bundle/bin/describe
     rules:
       - when command is netlify:describe must have netlify:read
+  sites:
+    description: List all sites in the connected Netlify account
+    executable: /home/bundle/bin/sites
+    rules:
+      - when command is netlify:sites must have netlify:read
 templates:
   list:
     body: |
@@ -34,3 +39,11 @@ templates:
       **Custom Domain:** ~\$results[0].custom_domain~
       **Last Deploy:** ~\$results[0].published_deploy_time~
       **Current Revision:** ~\$results[0].published_deploy_commit~
+  sites:
+    body: |
+      | Name | Custom Domain | Last Updated |
+      |------|---------------|--------------|
+      ~each var=\$results~
+      |~\$item.name~|~\$item.custom_domain~|~\$item.updated_at~|
+      ~end~
+    

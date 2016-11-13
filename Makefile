@@ -8,6 +8,9 @@ list:
 describe:
 	./bin/describe
 
+sites:
+	./bin/sites
+
 docker:
 	docker build -t marc/netlify-cog .
 
