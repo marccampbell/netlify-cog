@@ -2,7 +2,7 @@
 cog_bundle_version: 4
 name: netlify
 description: Interact with Netlify
-version: 0.0.19
+version: 0.0.20
 author: Marc Campbell <marc.e.campbell@gmail.com>
 docker: 
   image: marc/netlify-cog
@@ -35,6 +35,7 @@ templates:
       ~end~
   describe:
     body: |
+      \n
       **Name:** ~\$results[0].name~
       **Custom Domain:** ~\$results[0].custom_domain~
       **Last Deploy:** ~\$results[0].published_deploy_time~

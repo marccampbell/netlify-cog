@@ -2,6 +2,9 @@ build:
 	mkdir -p lib
 	./node_modules/.bin/tsc
 
+test:
+	yarn test
+
 list:
 	./bin/list
 
