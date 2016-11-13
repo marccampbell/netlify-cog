@@ -1,5 +1,7 @@
 # Netlify Bundle for Cog
 
+![Build Status](https://circleci.com/gh/marccampbell/netlify-cog.png)
+
 ## Commands
 ```
 netlify:list <project> - Show a list of recent deploys and statuses of a project
